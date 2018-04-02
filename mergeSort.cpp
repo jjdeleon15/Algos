@@ -1,3 +1,19 @@
+/*
+Assumptions:
+	Objects being parsed have overriden the comparison operators to use to their desired comparison
+	size is the true length of the array being sorted
+Solution Background:
+	In college, the simplest solution programmatically seemed to be using recursion. As it abstracts some of the partitioning
+	logic from the developer. But I thought that it was extremely wasteful memory wise to add all the funciton calls as well as 
+	memory duplication needed to achieve this. This solution would use memory of order n * log(n) which I thought was also wasteful. 
+	After plenty of thinking, I realized that I could use an array of the same size and alternate the merges back and forth 
+	between the two. This is the inspiration to this solution. In addition, by realizing that the merges occuring would perfectly
+	sync with the powers of 2, allowed me to iterate through the array, exactly log(n) times, merging the smaller chunks as I 
+	iterated. 
+	I did write this about 2 years ago, and don't remember the speeds of it. But would love to see if anyone has any recs or 
+	optimizaitons for it. Not to mention, if anyone has a faster solution and would like to test them out :) 
+ */
+
 template <class T>
 T *Sorter<T>::mergeSort(T *array, int size) {
 	T *temp = new T[size];
